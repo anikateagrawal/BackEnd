@@ -1,0 +1,16 @@
+<%- include('partials/header')%>
+    <h1>To Do List</h1>
+    <ul class="list-group">
+        <% todos.forEach((todo)=>{ %>
+            <li class="list-group-item"><%= todo %></li>
+        <%})%>
+    </ul>
+
+    <% let age=21 %>
+    <script>
+        let myage=`<%=age%>`;
+        alert(myage);
+    </script>
+    <script src="./js.js"></script>
+</body>
+</html>

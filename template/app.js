@@ -17,3 +17,11 @@ app.get('/home',(req,res)=>{
 });
 
 app.use(express.static(path.join(__dirname,'public')));
+
+const todos=["football","coding","Reading"];
+
+app.get('/todos',(req,res)=>{
+    res.render('Todos',{todos});
+});
+
+app.set('partials',path.join(__dirname,'views','partials'));
