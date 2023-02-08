@@ -7,11 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Comments</h1>
     <% comments.forEach((com)=>{ %>
-        <p><span><%=com.id %> </span><%=com.user %>: <span><%=com.text %></span></p>
+        <p><span><%=com.id %> </span><%=com.user %>: <span><%=com.text %></span> </p>
     <% })%>
 
-
+    
     <a href="http://localhost:5050/comments/new">New Comment</a>
     
 </body>

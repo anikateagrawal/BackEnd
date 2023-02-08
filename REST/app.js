@@ -17,20 +17,25 @@ app.get('/comments',(req,res)=>{
 
 app.post('/comments',(req,res)=>{
         const {username,comment}=req.body;
-    if(comments.length!=0)
-    var id=comments[comments.length-1].id+1;
-    else id=1;
+    id=comments.length+1;
     comments.push({
         'id':id,
         user:username,
         text:comment
     });
-    res.render('index',{comments});
+    res.redirect('/comments');
 })
 
 app.get('/comments/new',(req,res)=>{
     res.render('new');
 })
+
+app.get('/comments/:id',(req,res)=>{
+    const {id}=req.params;
+    res.send(comments[id-1]);
+})
+
+
 
 
 var comments=[
