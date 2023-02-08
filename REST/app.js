@@ -38,9 +38,6 @@ app.get('/comments/:id',(req,res)=>{
     res.render('show',{comment});
 })
 
-
-
-
 var comments=[
     {
     id:1,
