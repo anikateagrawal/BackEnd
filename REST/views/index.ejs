@@ -9,7 +9,7 @@
 <body>
     <h1>Comments</h1>
     <% comments.forEach((com)=>{ %>
-        <p><span><%=com.id %> </span><%=com.user %>: <span><%=com.text %></span> </p>
+        <p><span><%=com.id %> </span><%=com.user %>: <span><%=com.text %></span> <form action="/comments/<%=com.id%>?_method=delete" method="post"><button>delete</button></form></p>
     <% })%>
 
     <form id="show">
@@ -17,7 +17,7 @@
         <input type="text" name="id" id="id" required>
         <button>Show</button>
     </form>
-    <a href="http://localhost:5050/comments/new">New Comment</a>
+    <a href="/comments/new">New Comment</a>
     <script>
         document.getElementById('show').addEventListener('submit',show);
         function show(e){
