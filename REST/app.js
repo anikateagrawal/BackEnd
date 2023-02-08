@@ -32,7 +32,10 @@ app.get('/comments/new',(req,res)=>{
 
 app.get('/comments/:id',(req,res)=>{
     const {id}=req.params;
-    res.send(comments[id-1]);
+    var comment=comments.find((comment)=>comment.id==id)
+    if(comment==undefined)res.send("Not found");
+    else
+    res.render('show',{comment});
 })
 
 
