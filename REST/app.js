@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const path=require('path');
 const methodOverride=require('method-override');
+const {v4:uuid}=require('uuid');
 
 app.use(methodOverride('_method'));
 
@@ -21,7 +22,7 @@ app.get('/comments',(req,res)=>{
 
 app.post('/comments',(req,res)=>{
         const {username,comment}=req.body;
-    id=comments.length+1;
+    id=uuid();
     comments.push({
         'id':id,
         user:username,
@@ -36,6 +37,7 @@ app.get('/comments/new',(req,res)=>{
 
 app.get('/comments/:id',(req,res)=>{
     const {id}=req.params;
+    console.log(id);
     var comment=comments.find((comment)=>comment.id==id)
     if(comment==undefined)res.send("Not found");
     else
@@ -71,15 +73,15 @@ app.get('/comments/:id/edit',(req,res)=>{
 
 var comments=[
     {
-    id:1,
+    id:uuid(),
     user:"john",
     text:"this is first comment"
 },{
-    id:2,
+    id:uuid(),
     user:"ron",
     text:"this is second comment"
 },{
-    id:3,
+    id:uuid(),
     user:"von",
     text:"this is third comment"
 }

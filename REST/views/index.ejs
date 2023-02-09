@@ -9,21 +9,12 @@
 <body>
     <h1>Comments</h1>
     <% comments.forEach((com)=>{ %>
-        <p><span><%=com.id %> </span><%=com.user %>: <span><%=com.text %></span> <form action="/comments/<%=com.id%>?_method=delete" method="post"><button>delete</button></form></p>
+        <p><%=com.user %>: <span><%=com.text %></span> 
+            <form action="/comments/<%=com.id %>" method="get"><button>show</button></form>
+            <form action="/comments/<%=com.id%>?_method=delete" method="post"><button>delete</button></form>
+        </p>
     <% })%>
 
-    <form id="show">
-        <label for="id">Enter Comment Id</label>
-        <input type="text" name="id" id="id" required>
-        <button>Show</button>
-    </form>
     <a href="/comments/new">New Comment</a>
-    <script>
-        document.getElementById('show').addEventListener('submit',show);
-        function show(e){
-            e.preventDefault();
-            window.location.href="http://localhost:5050/comments/"+document.getElementById("id").value;
-        }
-    </script>
 </body>
 </html>
