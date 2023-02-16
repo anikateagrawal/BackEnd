@@ -10,7 +10,7 @@
     <h1>Comments</h1>
     <% comments.forEach((com)=>{ %>
         <p><%=com.user %>: <span><%=com.text %></span> 
-            <form action="/comments/<%=com.id %>" method="get"><button>show</button></form>
+            <a href="/comments/<%=com.id%>">show</a>
             <form action="/comments/<%=com.id%>?_method=delete" method="post"><button>delete</button></form>
         </p>
     <% })%>

@@ -16,7 +16,6 @@ app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 
 app.get('/comments',(req,res)=>{
-    console.log(req.query);
     res.render('index',{comments})
 })
 
