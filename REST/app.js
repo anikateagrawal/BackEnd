@@ -10,6 +10,10 @@ app.listen(5050,()=>{
     console.log("server running at port 5050");
 });
 
+app.get('/',(req,res)=>{
+    res.redirect('/comments');
+})
+
 app.use(express.urlencoded({extended:true}));
 app.set('view engine','ejs');
 
