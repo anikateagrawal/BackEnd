@@ -10,7 +10,7 @@
     <h1><%= comment.user %> 's comment</h1>
     <h3><%= comment.text %></h3>
     <a href="/comments/<%= comment.id %>/edit">Edit</a>
-    <a href="http://localhost:5050/comments">All Comments</a>
+    <a href="/comments">All Comments</a>
     <form action="/comments/<%= comment.id%>/?_method=delete" method="post"><button>Delete</button> </form>
 </body>
 </html>
