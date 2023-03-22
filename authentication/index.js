@@ -9,6 +9,10 @@ const session=require('express-session');
 
 const saltRounds = 10;
 
+const MongoDBStore = require('express-mongodb-session')(session);
+
+
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/users")
   .then(() => console.log("DB Connected"))
@@ -18,11 +22,25 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
+
+const store = new MongoDBStore({
+    uri: 'mongodb://127.0.0.1:27017/session',
+    collection: 'mySessions',
+    expires:60*60*1000
+  });
+
+  store.on('error', function(error) {
+    console.log(error);
+  });
+
+
 app.use(session({
     secret:'secret',
-    resave:false,
+    resave:true,
+    store:store,
     saveUninitialized:true,
-    cookie:{}
+    cookie:{
+    }
 }))
 
 app.get("/", (req, res) => {
